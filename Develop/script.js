@@ -12,3 +12,59 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+//Password generation function
+
+function generatePassword () {
+
+  var upperArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
+  "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+  "n", "o",  "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var numberArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  var symbolArray = ["@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+"];
+  var userArray = [];
+  var resultArray = [];
+  
+
+  var numChar = prompt ("Input desired number of characters for password within range 8 - 128");
+  var upper = confirm("Do you require Uppercase letters for your password?");
+  var lower = confirm("Do you require Lowercase letters for your password?");
+  var numbers = confirm("Do you require numbers for your password?");
+  var symbols = confirm("Do you require special characters for your password?");
+
+  if (upper){
+
+    resultArray = resultArray.concat(upperArray);
+  
+  }
+  
+  if (lower){
+
+    resultArray = resultArray.concat(lowerArray);
+  
+  }
+
+  if (numbers){
+
+    resultArray = resultArray.concat(numberArray);
+    
+  }
+  
+  if (symbols){
+
+    resultArray = resultArray.concat(symbolArray);
+
+  }
+
+  console.log(resultArray)
+
+  for(var i = 0; i < numChar; i++) {
+
+    userArray.push (resultArray[Math.floor(Math.random() * resultArray.length)]);
+
+  }
+
+return userArray.join("");
+
+}
