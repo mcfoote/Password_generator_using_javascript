@@ -33,6 +33,15 @@ function generatePassword () {
   //Take user input for number of characters
   var numChar = prompt ("Input desired number of characters for password within range 8 - 128");
 
+  //check input for valid range
+  if(numChar < 8 || numChar > 128){
+
+    alert("Must input number between 8 and 128, please try again");
+
+    return ;
+
+  }
+
   // click yes/no for each category of characters
   var upper = confirm("Do you require Uppercase letters for your password?");
   var lower = confirm("Do you require Lowercase letters for your password?");
@@ -64,14 +73,24 @@ function generatePassword () {
 
   }
 
-  console.log(resultArray)
+  // Check that at least one category is chosen
+  if(!upper && !lower && !numbers && !symbols) {
 
+    alert("Must pick at least one Category, please try again");
+
+    return ;
+
+  }
+
+
+  //Use random num generation to pick random characters from desired categories
   for(var i = 0; i < numChar; i++) {
 
     userArray.push (resultArray[Math.floor(Math.random() * resultArray.length)]);
 
   }
 
+//return generated password
 return userArray.join("");
 
 }
